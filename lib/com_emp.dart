@@ -139,25 +139,20 @@ class _ComEmp extends State<ComEmp> {
             ],
           ),
            DataTable(
-                     border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.black)),
-         dataRowColor: 
-         MaterialStateColor.resolveWith((states) => Colors.grey),
-
-        columns: const [
-        DataColumn(label: 
-        SizedBox(width:140,child: Text('Company Name'),),),
-      
-        DataColumn(label: SizedBox(width:100,child: Text(' No.of Employees'),),),
-        DataColumn(label: SizedBox(width:100,child:Text('Mob.No'),),),
-        DataColumn(label: SizedBox(width:200,child: Text('Company Address'),),),
+            border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.black)),
+            dataRowColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+            columns: const [
+              DataColumn(label: SizedBox(width:20,child: Text(''),),),        
+              DataColumn(label: SizedBox(width:140,child: Text('Company Name'),),),
+              DataColumn(label: SizedBox(width:100,child: Text(' No.of Employees'),),),
+              DataColumn(label: SizedBox(width:100,child:Text('Mob.No'),),),
+              DataColumn(label: SizedBox(width:200,child: Text('Company Address'),),),
       ], 
       rows: [
         DataRow(
            
           cells: [
-          DataCell(Row(children: [
-          
-        Checkbox(
+          DataCell(        Checkbox(
           checkColor: Colors.white,
           activeColor: const Color.fromARGB(255, 31, 146, 33),
           value: val1,
@@ -169,7 +164,10 @@ class _ComEmp extends State<ComEmp> {
         });
           },
         ),
-        const Text('JEYAM STEELS'),
+),
+          DataCell(Row(children: const [
+          
+          Text('JEYAM STEELS'),
           ])),
           const DataCell(Text('50')),
         const DataCell(Text('9154755788')),
@@ -186,9 +184,7 @@ class _ComEmp extends State<ComEmp> {
 
         ]),
         DataRow( cells: [
-          DataCell(Row(children: [
-         
-        Checkbox(
+          DataCell(        Checkbox(
           checkColor: Colors.white,
           activeColor: const Color.fromARGB(255, 31, 146, 33),
           value: val2,
@@ -200,7 +196,10 @@ class _ComEmp extends State<ComEmp> {
         });
           },
         ),
-        const Text('JSF FOODS LTD'),
+),
+          DataCell(Row(children: const [
+         
+        Text('JSF FOODS LTD'),
           ])),
           const DataCell(Text('50')),
         const DataCell(Text('9154755788')),

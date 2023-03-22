@@ -5,8 +5,11 @@ import 'package:healthcare/login.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized;
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((value) => null);
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then(
+    (value) => null,
+  );
   runApp(const MyApp());
 }
 
@@ -38,13 +41,14 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(future:_initializeFirebase(),
-      builder: (context,snapshot){
-        if (snapshot.connectionState== ConnectionState.done){
-          return const Login();
-        }
-        return const CircularProgressIndicator();
-      }),
+      body: FutureBuilder(
+          future: _initializeFirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return const Login();
+            }
+            return const CircularProgressIndicator();
+          }),
     );
   }
 }

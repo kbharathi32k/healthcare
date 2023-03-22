@@ -183,7 +183,7 @@ class _MyWidgetState extends State<MyWidget> {
                 items: [
                   SideMenuItem(
                     priority: 0,
-                    title: 'LogIn',
+                    title: 'Accounts',
                     onTap: (page, _) {
                       sideMenu.changePage(page);
                     },
@@ -299,7 +299,7 @@ class _MyWidgetState extends State<MyWidget> {
                     ],
                   ),
                   const Text(
-                    "Log In Creation",
+                    "Creating Accounts",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 25,

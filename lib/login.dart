@@ -11,9 +11,10 @@ class Login extends StatefulWidget {
 
 class _Login extends State<Login> {
   static Future<User?> loginUsingEmailPassword(
-      {required String email,
-      required String password,
-      required BuildContext context}) async {
+      {
+        required String email,
+        required String password,
+        required BuildContext context}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
     try {
@@ -108,8 +109,8 @@ class _Login extends State<Login> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          labelText: 'Enter Your Username/Email',
-                          labelStyle: const TextStyle(
+                          hintText: 'Enter Your Username/Email',
+                          hintStyle: const TextStyle(
                               fontSize: 12,
                               fontFamily: 'Poppins',
                               color: Colors.black)),
@@ -138,8 +139,8 @@ class _Login extends State<Login> {
                                 ? Icons.visibility
                                 : Icons.visibility_off),
                           ),
-                          labelText: 'Enter Your Password',
-                          labelStyle: const TextStyle(
+                          hintText: 'Enter Your Password',
+                          hintStyle: const TextStyle(
                               fontSize: 13,
                               fontFamily: 'Poppins',
                               color: Colors.black)),
