@@ -9,7 +9,7 @@ class ComEmp extends StatefulWidget {
 }
 
 class _ComEmp extends State<ComEmp> {
-    bool val1 = false;
+  bool val1 = false;
   bool val2 = false;
   bool val3 = false;
   bool val4 = false;
@@ -93,396 +93,433 @@ class _ComEmp extends State<ComEmp> {
                     color: Colors.black),
               ),
               Column(
-          children: [
-         
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            
-            
-            children: [
-                
-             OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                
-   side: const BorderSide(width: 1.0, color: Colors.black), //<-- SEE HERE
-  ),
-               child: Row(
-                 children: [
-                   IconButton(icon:const Icon(Icons.filter_list),color: Colors.black, onPressed: () {  },),
-                   const Text('Filter',style: TextStyle(color: Colors.black),),
-                   
-                   
-                 ],
-               ),
-               onPressed: () {
-                 
-               },
-             ),
-              const SizedBox(width: 600,),
-              const Padding(padding: EdgeInsets.only(right: 30),),
-              SizedBox(
-                width: 220,
-                height: 30,
-                
-                child: TextField(
-
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      prefixIcon: const Icon(Icons.search_off_outlined,size:20,),
-                      label: const Text('Search'),
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        height: 30,
+                        width: 100,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                width: 1.0, color: Colors.black), //<-- SEE HERE
+                          ),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.filter_list),
+                                color: Colors.black,
+                                onPressed: () {},
+                              ),
+                              const Text(
+                                'Filter',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          onPressed: () {},
+                        ),
                       ),
-                ),
+                      const SizedBox(
+                        width: 600,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 30),
+                      ),
+                      SizedBox(
+                        width: 220,
+                        height: 30,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            prefixIcon: const Icon(
+                              Icons.search_off_outlined,
+                              size: 20,
+                            ),
+                            label: const Text('Search'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  DataTable(
+                      border: TableBorder.symmetric(
+                          outside: const BorderSide(
+                              width: 0.2, color: Colors.black)),
+                      dataRowColor: MaterialStateColor.resolveWith(
+                          (states) => Colors.grey),
+                      columns: const [
+                        DataColumn(
+                          label: SizedBox(
+                            width: 5,
+                            child: Text('Select'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 172,
+                            child: Text('Company Name'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 152,
+                            child: Text(' No.of Employees'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 100,
+                            child: Text('Mob.No'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 200,
+                            child: Text('Company Address'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 5,
+                            child: Text('Delete'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 5,
+                            child: Text('Edit'),
+                          ),
+                        ),
+                      ],
+                      rows: [
+                        DataRow(cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 5,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    val1 = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          const DataCell(SizedBox(
+                              width: 172, child: Text('JEYAM STEELS'))),
+                          const DataCell(
+                              SizedBox(width: 152, child: Text('50'))),
+                          const DataCell(
+                              SizedBox(width: 100, child: Text('9154755788'))),
+                          const DataCell(SizedBox(
+                            width: 200,
+                            child: Text(
+                              'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                              maxLines: 2,
+                              overflow: TextOverflow.clip,
+                            ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 50, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 5, child: Icon(Icons.edit)),
+                          ),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 5,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    val1 = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          const DataCell(SizedBox(
+                              width: 172, child: Text('JEYAM STEELS'))),
+                          const DataCell(
+                              SizedBox(width: 152, child: Text('50'))),
+                          const DataCell(
+                              SizedBox(width: 100, child: Text('9154755788'))),
+                          const DataCell(SizedBox(
+                            width: 200,
+                            child: Text(
+                              'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                              maxLines: 2,
+                              overflow: TextOverflow.clip,
+                            ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 50, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 5, child: Icon(Icons.edit)),
+                          ),
+                        ]),
+                      ]),
+                  DataTable(
+                      border: TableBorder.symmetric(
+                          outside:
+                              const BorderSide(width: 0.2, color: Colors.grey)),
+                      columns: [
+                        DataColumn(
+                            label: Row(children: const [
+                          SizedBox(
+                            width: 200,
+                            child: Text(' Emp.Name'),
+                          ),
+                          Icon(
+                            Icons.arrow_downward_sharp,
+                            size: 15,
+                          ),
+                        ])),
+                        DataColumn(
+                            label: Row(children: const [
+                          Text('Gender'),
+                          Icon(
+                            Icons.arrow_downward_sharp,
+                            size: 15,
+                          ),
+                        ])),
+                        DataColumn(
+                            label: Row(children: const [
+                          Text('Experience'),
+                          Icon(
+                            Icons.arrow_downward_sharp,
+                            size: 15,
+                          ),
+                        ])),
+                        DataColumn(
+                            label: Row(children: const [
+                          Text('Mob.No'),
+                          Icon(
+                            Icons.arrow_downward_sharp,
+                            size: 15,
+                          ),
+                        ])),
+                        DataColumn(
+                            label: Row(children: const [
+                          SizedBox(
+                            width: 50,
+                          ),
+                          SizedBox(
+                            width: 500,
+                            child: Text(' Address'),
+                          ),
+                          Icon(
+                            Icons.arrow_downward_sharp,
+                            size: 15,
+                          ),
+                        ])),
+                      ],
+                      rows: [
+                        DataRow(
+                          cells: [
+                            DataCell(Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor:
+                                      const Color.fromARGB(255, 31, 146, 33),
+                                  value: valuefirst,
+                                  shape: const CircleBorder(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      valuefirst = value!;
+                                    });
+                                  },
+                                ),
+                                const CircleAvatar(
+                                  radius: 10,
+                                  backgroundImage:
+                                      AssetImage('assets/image/Doctor.jpg'),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text('Brocklym Simmens'),
+                              ],
+                            )),
+                            const DataCell(Text('Male')),
+                            const DataCell(Text('2 yrs')),
+                            const DataCell(Text('8736452398')),
+                            DataCell(Row(children: const [
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text.rich(
+                                TextSpan(
+                                  text:
+                                      'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(Icons.delete),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(Icons.edit),
+                            ]))
+                          ],
+                        ),
+                        DataRow(
+                          cells: [
+                            DataCell(Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor:
+                                      const Color.fromARGB(255, 31, 146, 33),
+                                  value: valuesecond,
+                                  shape: const CircleBorder(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      valuesecond = value!;
+                                    });
+                                  },
+                                ),
+                                const CircleAvatar(
+                                  radius: 10,
+                                  backgroundImage:
+                                      AssetImage('assets/image/Doctor.jpg'),
+                                ),
+                                const SizedBox(
+                                  width: 30,
+                                ),
+                                const Text('Kristin Watson'),
+                              ],
+                            )),
+                            const DataCell(Text('Female')),
+                            const DataCell(Text('5 yrs')),
+                            const DataCell(Text('9256794155')),
+                            DataCell(Row(children: const [
+                              Text(
+                                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                                maxLines: 2,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.delete),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.edit),
+                            ]))
+                          ],
+                        ),
+                        DataRow(
+                          cells: [
+                            DataCell(Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor:
+                                      const Color.fromARGB(255, 31, 146, 33),
+                                  value: valuethird,
+                                  shape: const CircleBorder(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      valuethird = value!;
+                                    });
+                                  },
+                                ),
+                                const CircleAvatar(
+                                  radius: 10,
+                                  backgroundImage:
+                                      AssetImage('assets/image/Doctor.jpg'),
+                                ),
+                                const SizedBox(
+                                  width: 30,
+                                ),
+                                const Text('Jacob Jones'),
+                              ],
+                            )),
+                            const DataCell(Text('Male')),
+                            const DataCell(Text('2 yrs')),
+                            const DataCell(Text('9865387412')),
+                            DataCell(Row(children: const [
+                              Text(
+                                  'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.delete),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(Icons.edit),
+                            ]))
+                          ],
+                        ),
+                        DataRow(cells: [
+                          DataCell(Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: valuefourth,
+                                shape: const CircleBorder(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    valuefourth = value!;
+                                  });
+                                },
+                              ),
+                              const CircleAvatar(
+                                radius: 10,
+                                backgroundImage:
+                                    AssetImage('assets/image/Doctor.jpg'),
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              const Text('Cody Fisher'),
+                            ],
+                          )),
+                          const DataCell(Text('Female')),
+                          const DataCell(Text('3 yrs')),
+                          const DataCell(Text('7598884412')),
+                          DataCell(Row(children: const [
+                            Text(
+                                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(Icons.delete),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(Icons.edit),
+                          ])),
+                        ])
+                      ]),
+                ],
               ),
-            ],
-          ),
-           DataTable(
-            border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.black)),
-            dataRowColor: MaterialStateColor.resolveWith((states) => Colors.grey),
-            columns: const [
-              DataColumn(label: SizedBox(width:20,child: Text(''),),),        
-              DataColumn(label: SizedBox(width:140,child: Text('Company Name'),),),
-              DataColumn(label: SizedBox(width:100,child: Text(' No.of Employees'),),),
-              DataColumn(label: SizedBox(width:100,child:Text('Mob.No'),),),
-              DataColumn(label: SizedBox(width:200,child: Text('Company Address'),),),
-      ], 
-      rows: [
-        DataRow(
-           
-          cells: [
-          DataCell(        Checkbox(
-          checkColor: Colors.white,
-          activeColor: const Color.fromARGB(255, 31, 146, 33),
-          value: val1,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)),
-          onChanged: (value) {
-        setState(() {
-          val1 = value!;
-        });
-          },
-        ),
-),
-          DataCell(Row(children: const [
-          
-          Text('JEYAM STEELS'),
-          ])),
-          const DataCell(Text('50')),
-        const DataCell(Text('9154755788')),
-         DataCell(Row(children: const [
-          SizedBox(
-            child: Text(
-                  'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',maxLines: 2,overflow: TextOverflow.clip,),
-          ),
-                SizedBox(width: 50,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ]))
-
-        ]),
-        DataRow( cells: [
-          DataCell(        Checkbox(
-          checkColor: Colors.white,
-          activeColor: const Color.fromARGB(255, 31, 146, 33),
-          value: val2,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)),
-          onChanged: (value) {
-        setState(() {
-          val2 = value!;
-        });
-          },
-        ),
-),
-          DataCell(Row(children: const [
-         
-        Text('JSF FOODS LTD'),
-          ])),
-          const DataCell(Text('50')),
-        const DataCell(Text('9154755788')),
-         DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
-                SizedBox(width: 200,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ]))
-            
-        ])
-      ]),
-     DataTable(
-          border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.grey)),
-          
-          columns: [
-        DataColumn(
-            label: Row(children: const [
-              SizedBox(width:200,child: Text(' Emp.Name'),),
-            
-              Icon(Icons.arrow_downward_sharp,size: 15,),
-            ])),
-        DataColumn(
-            label: Row(children: const [
-              Text('Gender'),
-              Icon(Icons.arrow_downward_sharp,size: 15,),
-            ])),
-        DataColumn(
-            label: Row(children: const [
-              Text('Experience'),
-              Icon(Icons.arrow_downward_sharp,size: 15,),
-            ])),
-        DataColumn(
-            label: Row(children: const [
-              Text('Mob.No'),
-              Icon(Icons.arrow_downward_sharp,size: 15,),
-            ])),
-        DataColumn(
-          
-            label: Row(children: const [
-              SizedBox(width: 50,),
-              SizedBox(width:500,child: Text(' Address'),),
-              Icon(Icons.arrow_downward_sharp,size: 15,),
-            ])),
-           
-          ],
-          rows: [
-        DataRow(
-          cells: [
-            DataCell(Row(
-              children: [
-                
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: const Color.fromARGB(255, 31, 146, 33),
-                  value: valuefirst,
-                  shape:const CircleBorder(),
-                 
-                  onChanged: (value) {
-                    setState(() {
-                      valuefirst = value!;
-                    });
-                  },
-                ),
-                const CircleAvatar(
-                  radius: 10,
-                  backgroundImage: AssetImage('assets/image/Doctor.jpg'),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text('Brocklym Simmens'),
-              ],
-            )),
-            const DataCell(Text('Male')),
-            const DataCell(Text('2 yrs')),
-            const DataCell(Text('8736452398')),
-            DataCell(Row(children: const [
-              SizedBox(width: 5,),
-
-          Text.rich(
-            TextSpan(
-              
-              text: 'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',),),
-                
-                SizedBox(width: 5,),
-                Icon(Icons.delete),
-                SizedBox(width: 5,),
-                Icon(Icons.edit),
-         ]))
-            
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Row(
-              children: [
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: const Color.fromARGB(255, 31, 146, 33),
-                  value: valuesecond,
-                  shape:const CircleBorder(),
-                  onChanged: (value) {
-                    setState(() {
-                      valuesecond = value!;
-                    });
-                  },
-                ),
-                const CircleAvatar(
-                  radius: 10,
-                  backgroundImage: AssetImage('assets/image/Doctor.jpg'),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                const Text('Kristin Watson'),
-              ],
-            )),
-            const DataCell(Text('Female')),
-            const DataCell(Text('5 yrs')),
-            const DataCell(Text('9256794155')),
-            DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',maxLines: 2,),
-                SizedBox(width: 10,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ]))
-            
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Row(
-              children: [
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: const Color.fromARGB(255, 31, 146, 33),
-                  value: valuethird,
-                  shape:const CircleBorder(),
-                  onChanged: (value) {
-                    setState(() {
-                      valuethird = value!;
-                    });
-                  },
-                ),
-                const CircleAvatar(
-                  radius: 10,
-                  backgroundImage: AssetImage('assets/image/Doctor.jpg'),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                const Text('Jacob Jones'),
-              ],
-            )),
-            const DataCell(Text('Male')),
-            const DataCell(Text('2 yrs')),
-            const DataCell(Text('9865387412')),
-            DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
-                SizedBox(width: 10,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),  
-                Icon(Icons.edit),
-         ]))
-           
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Row(
-              children: [
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: const Color.fromARGB(255, 31, 146, 33),
-                  value: valuefourth,
-                 shape:const CircleBorder(),
-                  onChanged: (value) {
-                    setState(() {
-                      valuefourth = value!;
-                    });
-                  },
-                ),
-                const CircleAvatar(
-                  radius: 10,
-                  backgroundImage: AssetImage('assets/image/Doctor.jpg'),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                const Text('Cody Fisher'),
-              ],
-            )),
-            const DataCell(Text('Female')),
-            const DataCell(Text('3 yrs')),
-            const DataCell(Text('7598884412')),
-            DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
-                SizedBox(width: 10,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ])),])]),
-         DataTable(
-        border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.grey)),
-        dataRowColor: 
-         MaterialStateColor.resolveWith((states) => Colors.grey),
-        columns: const [ 
-        DataColumn(label: Text(''),),
-      
-        DataColumn(label: Text('')),
-        DataColumn(label: Text('')),
-        DataColumn(label: Text('')),
-      ], rows: [
-        DataRow(
-           
-          cells: [
-          DataCell(Row(children: [
-          
-        Checkbox(
-          checkColor: Colors.white,
-          activeColor: const Color.fromARGB(255, 31, 146, 33),
-          value: val3,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)),
-          onChanged: (value) {
-        setState(() {
-          val3 = value!;
-        });
-          },
-        ),
-        const Text('AMMAN STEEL DOORS'),
-          ])),
-          const DataCell(Text('82')),
-        const DataCell(Text('9256794155')),
-         DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
-                SizedBox(width: 250,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ]))
-        ]),
-        DataRow(cells: [
-          DataCell(Row(children: [
-         
-        Checkbox(
-          checkColor: Colors.white,
-          activeColor: const Color.fromARGB(255, 31, 146, 33),
-          value: val4,
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)),
-          onChanged: (value) {
-        setState(() {
-          val4= value!;
-        });
-          },
-        ),
-        const Text('MADHURAM FOOD LTD'),
-          ])),
-          const DataCell(Text('33')),
-        const DataCell(Text('8736452398')),
-         DataCell(Row(children: const [
-          Text(
-                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj'),
-                SizedBox(width: 250,),
-                Icon(Icons.delete),
-                SizedBox(width: 10,),
-                Icon(Icons.edit),
-         ]))
-            
-        ])
-      ]),
-
-          ],
-        ), 
             ],
           ))
     ]));

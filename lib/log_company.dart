@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'companydetails.dart';
 
 class LogCompany extends StatefulWidget {
   const LogCompany({super.key});
@@ -22,15 +23,9 @@ class _LogCompany extends State<LogCompany> {
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
+  List<CompanyDetail> companydetail = List.empty(growable: true);
+
   final _formKey = GlobalKey<FormState>();
-  late String _compname,
-      _mailid,
-      _conperson,
-      _compadd,
-      _typecomp,
-      _pass,
-      _rpass;
-  late int _mblno, _noemp;
   final TextEditingController _compnamecontroller = TextEditingController();
   final TextEditingController _mblnocontroller = TextEditingController();
   final TextEditingController _mailidcontroller = TextEditingController();
@@ -40,71 +35,6 @@ class _LogCompany extends State<LogCompany> {
   final TextEditingController _noempcontroller = TextEditingController();
   final TextEditingController _passcontroller = TextEditingController();
   final TextEditingController _rpasscontroller = TextEditingController();
-
-  getCompname(compname) {
-    _compname = compname;
-  }
-
-  getMblno(mblno) {
-    _mblno = mblno;
-  }
-
-  getMailid(mailid) {
-    _mailid = mailid;
-  }
-
-  getConperson(conperson) {
-    _conperson = conperson;
-  }
-
-  getCompadd(compadd) {
-    _compadd = compadd;
-  }
-
-  getTypecomp(typecomp) {
-    _typecomp = typecomp;
-  }
-
-  getNoemp(noemp) {
-    _noemp = noemp;
-  }
-
-  getPass(pass) {
-    _pass = pass;
-  }
-
-  getRpass(rpass) {
-    _rpass = rpass;
-  }
-
-  createData() {
-    const Text('created....');
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("Company Account").doc(_compname);
-    Map<String, dynamic> students = {
-      "Company Name": _compname,
-      "Mobile Number": _mblno,
-      "Mail ID": _mailid,
-      "Contact Person": _conperson,
-      "Company Address": _compadd,
-      "Type of Company": _typecomp,
-      "Number of Employees": _noemp,
-      "Password": _pass,
-      "Re-Enter Password": _rpass
-    };
-    documentReference.set(students).whenComplete(() {
-      Text('$_compname  created');
-      Text('$_mblno  created');
-      Text('$_mailid  created');
-      Text('$_conperson  created');
-      Text('$_compadd  created');
-      Text('$_typecomp created');
-      Text('$_noemp created');
-      Text('$_pass created');
-      Text('$_rpass created');
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,9 +59,6 @@ class _LogCompany extends State<LogCompany> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                   ),
-                  onChanged: (String compname) {
-                    getCompname(compname);
-                  },
                 ),
               ),
               const SizedBox(height: 12),
@@ -325,17 +252,30 @@ class _LogCompany extends State<LogCompany> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5))),
                   onPressed: () async {
-                    _compnamecontroller.value.text.isNotEmpty;
-                    _mblnocontroller.value.text.isNotEmpty;
-                    _mailidcontroller.value.text.isNotEmpty;
-                    _conpersoncontroller.value.text.isNotEmpty;
-                    _compaddcontroller.value.text.isNotEmpty;
-                    _typecompcontroller.value.text.isNotEmpty;
-                    _noempcontroller.value.text.isNotEmpty;
-                    _passcontroller.value.text.isNotEmpty;
-                    _rpasscontroller.value.text.isNotEmpty
-                        ? createData()
-                        : null;
+                    String compname = _compnamecontroller.text;
+                    String mailid = _mailidcontroller.text;
+                    String conperson = _conpersoncontroller.text;
+                    String compadd = _compaddcontroller.text;
+                    String typecomp = _typecompcontroller.text;
+                    String pass = _passcontroller.text;
+                    String rpass = _rpasscontroller.text;
+                    String mblno = _mblnocontroller.text;
+                    String noemp = _noempcontroller.text;
+
+                    if (compname.isNotEmpty && mailid.isNotEmpty) {
+                      setState(() {
+                        companydetail.add(CompanyDetail(
+                            compname: compname,
+                            mailid: mailid,
+                            compadd: compadd,
+                            conperson: conperson,
+                            mblno: mblno,
+                            noemp: noemp,
+                            pass: pass,
+                            rpass: rpass,
+                            typecomp: typecomp));
+                      });
+                    }
                   },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -360,17 +300,3 @@ class _LogCompany extends State<LogCompany> {
     ));
   }
 }
-
-
-                  onPressed: () async {
-                    _compnamecontroller.value.text.isNotEmpty;
-                    _mblnocontroller.value.text.isNotEmpty;
-                    _mailidcontroller.value.text.isNotEmpty;
-                    _conpersoncontroller.value.text.isNotEmpty;
-                    _compaddcontroller.value.text.isNotEmpty;
-                    _typecompcontroller.value.text.isNotEmpty;
-                    _noempcontroller.value.text.isNotEmpty;
-                    _passcontroller.value.text.isNotEmpty;
-                    _rpasscontroller.value.text.isNotEmpty
-                        ? createData()
-                        : null;

@@ -1,5 +1,6 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import'package:searchbar_animation/searchbar_animation.dart';
 import 'data_doctor.dart';
 import 'data_employee.dart';
 import 'log_company.dart';
@@ -42,12 +43,50 @@ class _MyWidgetState extends State<MyWidget> {
   bool val3 = false;
   bool val4 = false;
   bool val5 = false;
-
+Widget _buildSearchbarAnimation() {
+    return SafeArea(
+      child: SizedBox(
+        height: 40,width: 300,
+        child: SearchBarAnimation(
+          searchBoxBorderColour: Colors.black,
+                          textEditingController: TextEditingController(),
+                          isOriginalAnimation: true,
+                          onExpansionComplete: () {
+                            debugPrint(
+                                'do something just after searchbox is opened.');
+                          },
+                          onCollapseComplete: () {
+                            debugPrint(
+                                'do something just after searchbox is closed.');
+                          },
+                          onPressButton: (isSearchBarOpens) {
+                            debugPrint(
+                                'do something before animation started. It\'s the ${isSearchBarOpens ? 'opening' : 'closing'} animation');
+                          },
+                          trailingWidget: const Icon(
+                            Icons.search,
+                            size: 18,
+                            color: Color.fromARGB(255, 79, 121, 63),
+                          ),
+                          secondaryButtonWidget: const Icon(
+                            Icons.close,
+                            size: 18,
+                            color: Color.fromARGB(255, 79, 121, 63),
+                          ),
+                          buttonWidget: const Icon(
+                            Icons.search,
+                            size: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        children: [
+        children: [         
           SizedBox(
           width: MediaQuery.of(context).size.width * 0.2,
             child: Card(
@@ -183,7 +222,7 @@ class _MyWidgetState extends State<MyWidget> {
                 items: [
                   SideMenuItem(
                     priority: 0,
-                    title: 'Accounts',
+                    title: 'Creating Accounts',
                     onTap: (page, _) {
                       sideMenu.changePage(page);
                     },
@@ -247,30 +286,8 @@ class _MyWidgetState extends State<MyWidget> {
                     children: [
                       const SizedBox(width: 30
                       ),
-                      SizedBox(
-                          height: 33,
-                          width: 300,
-                          child: TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(Icons.search_rounded)),
-                                suffixIcon: CircleAvatar(
-                                    radius: 30,
-                                    backgroundColor:
-                                        const Color.fromARGB(255, 64, 114, 61),
-                                    child: IconButton(
-                                        color: Colors.white,
-                                        onPressed: () {},
-                                        icon:
-                                            const Icon(Icons.search_rounded))),
-                                hintText: 'Search',
-                                border: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Colors.grey, width: 1),
-                                    borderRadius: BorderRadius.circular(20))),
-                          )),
-                      const SizedBox(
+                       _buildSearchbarAnimation(),
+                       const SizedBox(
                         width: 600,
                       ),
                       Container(
@@ -366,28 +383,7 @@ class _MyWidgetState extends State<MyWidget> {
                     const SizedBox(
                       width: 30,
                     ),
-                    SizedBox(
-                        height: 33,
-                        width: 300,
-                        child: TextField(
-                          decoration: InputDecoration(
-                              prefixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.search_rounded)),
-                              suffixIcon: CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 64, 114, 61),
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.search_rounded))),
-                              hintText: 'Search',
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.grey, width: 1),
-                                  borderRadius: BorderRadius.circular(20))),
-                        )),
+                    _buildSearchbarAnimation(),
                     const SizedBox(
                       width: 600,
                     ),
@@ -769,28 +765,7 @@ class _MyWidgetState extends State<MyWidget> {
                     const SizedBox(
                       width: 30,
                     ),
-                    SizedBox(
-                        height: 33,
-                        width: 300,
-                        child: TextField(
-                          decoration: InputDecoration(
-                              prefixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.search_rounded)),
-                              suffixIcon: CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 64, 114, 61),
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.search_rounded))),
-                              hintText: 'Search',
-                              border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.grey, width: 1),
-                                  borderRadius: BorderRadius.circular(20))),
-                        )),
+                    _buildSearchbarAnimation(),
                     const SizedBox(
                       width: 600,
                     ),
@@ -827,278 +802,381 @@ class _MyWidgetState extends State<MyWidget> {
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                 ),
-                  Column(
-                      children: [         
-                        const SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            const SizedBox(width: 20,),
-                            OutlinedButton(
-                              style: OutlinedButton.styleFrom(side: const BorderSide(width: 1.0, color: Colors.black),),
-                              child: Row(
-                                children: [
-                                  IconButton(icon:const Icon(Icons.filter_list),color: Colors.black, onPressed: () {  },),
-                                  const Text('Filter',style: TextStyle(color: Colors.black),),                         
-                                  ],
-                              ),onPressed: () { },
-                            ),
-                            const SizedBox(width: 600,),
-                            const Padding(padding: EdgeInsets.only(right: 30),),
-                            SizedBox(width: 220,height: 30,
-                                child: TextField(
-                                     decoration: InputDecoration(
-                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                      prefixIcon: const Icon(Icons.search_off_outlined,size:20,),
-                                      label: const Text('Search'),
-                                      ),
-                                ),
-                            ),
-                          ],
-                        ),
-                        DataTable(
-                          border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.black)),
-                          dataRowColor:MaterialStateColor.resolveWith((states) => Colors.grey),
-                          columns: const [
-                            DataColumn(label:SizedBox(width:5,child: Text('')),),   
-                            DataColumn(label:Text('Company Name'),),   
-                            DataColumn(label: Text(' No.of Employees'),),
-                            DataColumn(label: Text('Mob.No'),),
-                            DataColumn(label: Text('Company Address'),),
-                            DataColumn(label:Text(''),),   
-                            DataColumn(label:Text(''),),   
-                          ], 
-                          rows: [
-                            DataRow(
-                              cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val1 = value!;});},
-                                  ),
-                                ),
-                                const DataCell(Text('JEYAM STEELS')),
-                                const DataCell(Text('50')),
-                                const DataCell(Text('9154755788')),
-                                const DataCell(Text('Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
-                                          maxLines: 2,overflow: TextOverflow.clip,),),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                              ]
-                            ),
-                            DataRow(
-                              cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val1 = value!;});},
-                                  ),
-                                ),
-                                const DataCell(Text('JEYAM STEELS')),
-                                const DataCell(Text('50')),
-                                const DataCell(Text('9154755788')),
-                                const DataCell(Text('Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
-                                          maxLines: 2,overflow: TextOverflow.clip,),),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                              ]
-                            ),
-                          ]
-                        ),
-                        DataTable(
-                          border: TableBorder.symmetric( outside: const BorderSide(width: 0.2,),),
-                          columns: [
-                            const DataColumn(label:Text(''),),   
-                            DataColumn(
-                              label: Row(
-                              children: const [
-                                Text('Emp.Name'),
-                                Icon(Icons.arrow_downward_sharp,size: 15,),
-                                ],
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        height: 30,
+                        width: 100,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                width: 1.0, color: Colors.black), //<-- SEE HERE
+                          ),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.filter_list),
+                                color: Colors.black,
+                                onPressed: () {},
                               ),
-                            ),
-                            DataColumn(
-                              label: Row(
-                              children: const [
-                                Text('Gender'),
-                                Icon(Icons.arrow_downward_sharp,size: 15,),
-                                ],
+                              const Text(
+                                'Filter',
+                                style: TextStyle(color: Colors.black),
                               ),
-                            ),
-                            DataColumn(
-                              label: Row(
-                              children: const [
-                                Text('Experience'),
-                                Icon(Icons.arrow_downward_sharp,size: 15,),
-                                ],
-                              ),
-                            ),
-                            DataColumn(
-                              label: Row(
-                              children: const [
-                                Text('Mo.No'),
-                                Icon(Icons.arrow_downward_sharp,size: 15,),
-                                ],
-                              ),
-                            ),
-                            DataColumn(
-                              label: Row(
-                              children: const [
-                                Text('Address'),
-                                Icon(Icons.arrow_downward_sharp,size: 15,),
-                                ],
-                              ),
-                            ),
-                            const DataColumn(label:Text(''),),   
-                            const DataColumn(label:Text(''),),   
-                          ],
-                          rows: [
-                          DataRow(
-                            cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val1 = value!;});},
-                                  ),
-                                ),
-                                DataCell(Row(
-                                children: const[
-                                  CircleAvatar(maxRadius: 17, minRadius: 17,
-                                  backgroundImage: AssetImage('assets/doctor.jpg'),
-                                  ),
-                                  SizedBox(width: 2,),
-                                  Text('Brocklym Simmens'),
-                                  ],
-                                )),
-                                const DataCell(Text('Male')),
-                                const DataCell(Text('2 yrs')),
-                                const DataCell(Text('8736452398')),
-                                const DataCell(Text(
-                                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj')),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
                             ],
                           ),
-                          DataRow(
-                            cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val1 = value!;});},
-                                  ),
-                                ),
-                                DataCell(Row(
-                                children: const[
-                                  CircleAvatar(maxRadius: 17, minRadius: 17,
-                                  backgroundImage: AssetImage('assets/doctor.jpg'),
-                                  ),
-                                  SizedBox(width: 2,),
-                                  Text('Brocklym Simmens'),
-                                  ],
-                                )),
-                                const DataCell(Text('Male')),
-                                const DataCell(Text('2 yrs')),
-                                const DataCell(Text('8736452398')),
-                                const DataCell(Text(
-                                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj')),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                            ],
-                          ),
-                          DataRow(
-                            cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val1 = value!;});},
-                                  ),
-                                ),
-                                DataCell(Row(
-                                children: const[
-                                  CircleAvatar(maxRadius: 17, minRadius: 17,
-                                  backgroundImage: AssetImage('assets/doctor.jpg'),
-                                  ),
-                                  SizedBox(width: 2,),
-                                  Text('Brocklym Simmens'),
-                                  ],
-                                )),
-                                const DataCell(Text('Male')),
-                                const DataCell(Text('2 yrs')),
-                                const DataCell(Text('8736452398')),
-                                const DataCell(Text(
-                                'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj')),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                            ],
-                          ),
-                        ]
+                          onPressed: () {},
                         ),
-                        DataTable(
-                          border: TableBorder.symmetric(outside: const BorderSide(width: 0.2, color: Colors.black)),
-                          dataRowColor:MaterialStateColor.resolveWith((states) => Colors.grey),
-                          columns: const [
-                            DataColumn(label:SizedBox(width:5,child: Text('')),),   
-                            DataColumn(label:Text('Company Name'),),   
-                            DataColumn(label: Text(' No.of Employees'),),
-                            DataColumn(label: Text('Mob.No'),),
-                            DataColumn(label: Text('Company Address'),),
-                            DataColumn(label:Text(''),),   
-                            DataColumn(label:Text(''),),   
-                          ], 
-                          rows: [
-                            DataRow(
-                              cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val3 = value!;});},
-                                  ),
-                                ),
-                                const DataCell(Text('JEYAM STEELS')),
-                                const DataCell(Text('50')),
-                                const DataCell(Text('9154755788')),
-                                const DataCell(Text('Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
-                                          maxLines: 2,overflow: TextOverflow.clip,),),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                              ]
+                      ),
+                      const SizedBox(
+                        width: 600,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 30),
+                      ),
+                      SizedBox(
+                        width: 220,
+                        height: 30,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            prefixIcon: const Icon(
+                              Icons.search_off_outlined,
+                              size: 20,
                             ),
-                            DataRow(
-                              cells: [
-                                DataCell(                      
-                                  Checkbox(checkColor: Colors.white,
-                                   activeColor: const Color.fromARGB(255, 31, 146, 33),value: val1,
-                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                                   onChanged: (value) {
-                                            setState(() {val4 = value!;});},
-                                  ),
-                                ),
-                                const DataCell(Text('JEYAM STEELS')),
-                                const DataCell(Text('50')),
-                                const DataCell(Text('9154755788')),
-                                const DataCell(Text('Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
-                                          maxLines: 2,overflow: TextOverflow.clip,),),
-                                const DataCell(Icon(Icons.delete),),
-                                const DataCell(Icon(Icons.edit),),
-                              ]
-                            ),
-                          ]
+                            label: const Text('Search'),
+                          ),
                         ),
-
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height:10),
+                  DataTable(
+                      border: TableBorder.symmetric(
+                          outside: const BorderSide(
+                              width: 0.2, color: Colors.black)),
+                      dataRowColor: MaterialStateColor.resolveWith(
+                          (states) => Colors.grey),
+                      columns: const [
+                        DataColumn(
+                          label: SizedBox(
+                            width: 56,
+                            child: Text('Select'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 120,
+                            child: Text('Company Name'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 120,
+                            child: Text(' No.of Employees'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 100,
+                            child: Text('Mob.No'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 200,
+                            child: Text('Company Address'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 50,
+                            child: Text('Delete'),
+                          ),
+                        ),
+                        DataColumn(
+                          label: SizedBox(
+                            width: 60,
+                            child: Text('Edit'),
+                          ),
+                        ),
                       ],
-        )
+                      rows: [
+                        DataRow(cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 60,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    val1 = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          const DataCell(SizedBox(
+                              width: 120, child: Text('JEYAM STEELS'))),
+                          const DataCell(
+                              SizedBox(width: 120, child: Text('50'))),
+                          const DataCell(
+                              SizedBox(width: 100, child: Text('9154755788'))),
+                          const DataCell(SizedBox(
+                            width: 200,
+                            child: Text(
+                              'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                              maxLines: 2,
+                              overflow: TextOverflow.clip,
+                            ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 50, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 60, child: Icon(Icons.edit)),
+                          ),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 60,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    val1 = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          const DataCell(SizedBox(
+                              width: 120, child: Text('JEYAM STEELS'))),
+                          const DataCell(
+                              SizedBox(width: 120, child: Text('50'))),
+                          const DataCell(
+                              SizedBox(width: 100, child: Text('9154755788'))),
+                          const DataCell(SizedBox(
+                            width: 200,
+                            child: Text(
+                              'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                              maxLines: 2,
+                              overflow: TextOverflow.clip,
+                            ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 50, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 60, child: Icon(Icons.edit)),
+                          ),
+                        ]),                      ]),
+                  DataTable(
+                      border: TableBorder.symmetric(
+                          outside:
+                              const BorderSide(width: 0.2, color: Colors.grey)),
+                      columns: [
+                        const DataColumn(label: SizedBox(width:20,child: Text(''))),
+                        DataColumn(
+                            label: SizedBox(width:160,
+                              child: Row(children: const [
+                                                      Text(' Emp.Name'),
+                                                      Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                                                      ),
+                                                    ]),
+                            )),
+                        DataColumn(
+                            label: SizedBox(width:62,
+                              child: Row(children: const [
+                                                      Text('Gender'),
+                                                      Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                                                      ),
+                                                    ]),
+                            )),
+                        DataColumn(
+                            label: SizedBox(width:85,
+                              child: Row(children: const [
+                                                      Text('Experience'),
+                                                      Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                                                      ),
+                                                    ]),
+                            )),
+                        DataColumn(
+                            label: SizedBox(width:80,
+                              child: Row(children: const [
+                                                      Text('Mob.No'),
+                                                      Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                                                      ),
+                                                    ]),
+                            )),
+                        DataColumn(
+                            label: SizedBox(width:200,
+                              child: Row(children: const [
+                                Text(' Address'),
+                                                      Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                                                      ),
+                                                    ]),
+                            )),
+                        const DataColumn(
+                          label: SizedBox(
+                            width: 20,
+                            child: Text(''),
+                          ),
+                        ),
+                        const DataColumn(
+                          label: SizedBox(
+                            width: 20,
+                            child: Text(''),
+                          ),
+                        ),
+                      ],
+                      rows: [
+                        DataRow(
+                          cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 20,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    valuefirst = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                            DataCell(SizedBox(width:160,
+                              child: Row(
+                                children: const [
+                                  CircleAvatar(
+                                    radius: 10,
+                                    backgroundImage:
+                                        AssetImage('assets/image/Doctor.jpg'),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text('Brocklym Simmens'),
+                                ],
+                              ),
+                            )),
+                          const DataCell(
+                              SizedBox(width: 62, child: Text('Male'))),
+                          const DataCell(
+                              SizedBox(width: 85, child: Text('2 Yrs'))),
+                          const DataCell(
+                              SizedBox(width: 80, child: Text('8334755788'))),
+                          const DataCell(SizedBox(width:200,
+                            child: Text.rich(
+                                TextSpan(
+                                  text:
+                                      'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                                ),
+                              ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 20, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 20, child: Icon(Icons.edit)),
+                          ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: [
+                          DataCell(
+                            SizedBox(
+                              width: 20,
+                              child: Checkbox(
+                                checkColor: Colors.white,
+                                activeColor:
+                                    const Color.fromARGB(255, 31, 146, 33),
+                                value: val1,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    valuefirst = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                            DataCell(SizedBox(width:160,
+                              child: Row(
+                                children: const [
+                                  CircleAvatar(
+                                    radius: 10,
+                                    backgroundImage:
+                                        AssetImage('assets/image/Doctor.jpg'),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text('Brocklym Simmens'),
+                                ],
+                              ),
+                            )),
+                          const DataCell(
+                              SizedBox(width: 62, child: Text('Male'))),
+                          const DataCell(
+                              SizedBox(width: 85, child: Text('2 Yrs'))),
+                          const DataCell(
+                              SizedBox(width: 80, child: Text('8334755788'))),
+                          const DataCell(SizedBox(width:200,
+                            child: Text.rich(
+                                TextSpan(
+                                  text:
+                                      'Accra Ghana Ipsum dolor sit amet,constene afipesing elie,sed ddeelkj',
+                                ),
+                              ),
+                          )),
+                          const DataCell(
+                            SizedBox(width: 20, child: Icon(Icons.delete)),
+                          ),
+                          const DataCell(
+                            SizedBox(width: 20, child: Icon(Icons.edit)),
+                          ),
+                          ],
+                        ),
+                        ]
+                  ),
+                
+                ],
+              ),
 
               ],
             ),
@@ -1525,6 +1603,7 @@ class _MyWidgetState extends State<MyWidget> {
                       const SizedBox(
                         width: 30,
                       ),
+                      
                       SizedBox(
                           height: 33,
                           width: 300,
@@ -1639,4 +1718,4 @@ class _MyWidgetState extends State<MyWidget> {
       ),
     );
   }
-}
+  }

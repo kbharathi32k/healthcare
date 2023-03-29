@@ -109,22 +109,17 @@ class _DataEmployee extends State<DataEmployee> {
                       )),
                 ])),
                 DataColumn(
-                    label: Row(children: [
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  SizedBox(
-                      width: 100,
-                      child: Row(
-                        children: const [
-                          Text('Registered Date'),
-                          Icon(
-                            Icons.arrow_downward_sharp,
-                            size: 15,
-                          ),
-                        ],
-                      )),
-                ])),
+                    label: SizedBox(
+                        width: 100,
+                        child: Row(
+                          children: const [
+                            Text('Registered Date'),
+                            Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 15,
+                            ),
+                          ],
+                        ))),
               ],
               rows: [
                 DataRow(

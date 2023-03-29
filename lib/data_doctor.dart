@@ -95,11 +95,8 @@ class _DataDoctor extends State<DataDoctor> {
             ])),
             DataColumn(
                 label: Row(children: [
-              const SizedBox(
-                width: 60,
-              ),
               SizedBox(
-                  width: 109,
+                  width: 100,
                   child: Row(
                     children: const [
                       Text('Registered Date'),
